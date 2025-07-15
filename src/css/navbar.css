@@ -74,11 +74,58 @@
     padding: 0 20px;
   }
   
+  .navbar-logo {
+    height: 40px;
+  }
+  
   .navbar-nav {
-    gap: 35px;
+    gap: 25px;
   }
   
   .navbar-nav a {
     font-size: 11px;
+    letter-spacing: 0.3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    height: 70px;
+  }
+  
+  .navbar-container {
+    padding: 0 15px;
+  }
+  
+  .navbar-logo {
+    height: 35px;
+  }
+  
+  .navbar-nav {
+    gap: 15px;
+  }
+  
+  .navbar-nav a {
+    font-size: 10px;
+    letter-spacing: 0.2px;
+  }
+}
+
+@media (max-width: 375px) {
+  .navbar-container {
+    padding: 0 10px;
+  }
+  
+  .navbar-logo {
+    height: 30px;
+  }
+  
+  .navbar-nav {
+    gap: 10px;
+  }
+  
+  .navbar-nav a {
+    font-size: 9px;
+    letter-spacing: 0.1px;
   }
 } 
