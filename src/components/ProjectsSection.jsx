@@ -1,6 +1,43 @@
 import { useState, useEffect } from 'react';
 import '../css/projectsSection.css';
 
+// Imports para imágenes de Viviendas
+import vivienda1 from '../assets/Viviendas/Enscape_2025-04-27-22-55-27.JPG';
+import vivienda2 from '../assets/Viviendas/20.JPG';
+import vivienda3 from '../assets/Viviendas/Enscape_2025-04-27-22-46-55.JPG';
+import vivienda4 from '../assets/Viviendas/23.JPG';
+import vivienda5 from '../assets/Viviendas/28.JPG';
+import vivienda6 from '../assets/Viviendas/Enscape_2025-04-27-22-53-25.JPG';
+import vivienda7 from '../assets/Viviendas/E21.JPG';
+import vivienda8 from '../assets/Viviendas/30.JPG';
+import vivienda9 from '../assets/Viviendas/Enscape_2025-04-27-22-56-56.JPG';
+import vivienda10 from '../assets/Viviendas/Enscape_2025-05-02-19-55-3221.JPG';
+import vivienda11 from '../assets/Viviendas/Enscape_2025-05-04-21-00-1630.JPG';
+
+// Imports para imágenes de Interiorismo
+import interiorismo1 from '../assets/Interiorismo/playa1.JPG';
+import interiorismo2 from '../assets/Interiorismo/c2.JPG';
+import interiorismo3 from '../assets/Interiorismo/playa3.JPG';
+import interiorismo4 from '../assets/Interiorismo/depin1.JPG';
+import interiorismo5 from '../assets/Interiorismo/6.JPG';
+import interiorismo6 from '../assets/Interiorismo/c4.JPG';
+import interiorismo7 from '../assets/Interiorismo/playa4.JPG';
+import interiorismo8 from '../assets/Interiorismo/depin4.JPG';
+import interiorismo9 from '../assets/Interiorismo/depin5.JPG';
+import interiorismo10 from '../assets/Interiorismo/11.JPG';
+import interiorismo11 from '../assets/Interiorismo/12.JPG';
+import interiorismo12 from '../assets/Interiorismo/14.JPG';
+import interiorismo13 from '../assets/Interiorismo/IMG_2797.JPG';
+import interiorismo14 from '../assets/Interiorismo/IMG_2798.JPG';
+import interiorismo15 from '../assets/Interiorismo/IMG_2799.JPG';
+import interiorismo16 from '../assets/Interiorismo/new 3.JPG';
+
+// Imports para imágenes de Mobiliario
+import mobiliario1 from '../assets/Mobiliario/10.JPG';
+import mobiliario2 from '../assets/Mobiliario/8.JPG';
+import mobiliario3 from '../assets/Mobiliario/cocina in.JPG';
+import mobiliario4 from '../assets/Mobiliario/cocina in 2.JPG';
+
 const ProjectsSection = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(0);
@@ -13,125 +50,191 @@ const ProjectsSection = () => {
         id: 1,
         title: "Casa Moderna Minimalista",
         description: "Arquitectura contemporánea con líneas limpias",
-        image: "/src/assets/Viviendas/Enscape_2025-04-27-22-55-27.JPG"
+        image: vivienda1
       },
       {
         id: 2,
         title: "Residencia Contemporánea",
         description: "Hogar moderno con espacios abiertos",
-        image: "/src/assets/Viviendas/20.JPG"
+        image: vivienda2
       },
       {
         id: 3,
         title: "Villa Moderna",
         description: "Diseño arquitectónico de lujo",
-        image: "/src/assets/Viviendas/Enscape_2025-04-27-22-46-55.JPG"
+        image: vivienda3
       },
       {
         id: 4,
         title: "Casa Unifamiliar",
         description: "Espacios amplios y luminosos",
-        image: "/src/assets/Viviendas/23.JPG"
+        image: vivienda4
       },
       {
         id: 5,
         title: "Residencia Ejecutiva",
         description: "Elegancia y funcionalidad",
-        image: "/src/assets/Viviendas/28.JPG"
+        image: vivienda5
       },
       {
         id: 6,
         title: "Casa Conceptual",
         description: "Arquitectura innovadora",
-        image: "/src/assets/Viviendas/Enscape_2025-04-27-22-53-25.JPG"
+        image: vivienda6
       },
       {
         id: 7,
         title: "Residencia Premium",
         description: "Diseño exclusivo y sofisticado",
-        image: "/src/assets/Viviendas/E21.JPG"
+        image: vivienda7
       },
       {
         id: 8,
         title: "Casa Futurista",
         description: "Vanguardia arquitectónica",
-        image: "/src/assets/Viviendas/30.JPG"
+        image: vivienda8
+      },
+      {
+        id: 9,
+        title: "Casa Moderna Premium",
+        description: "Diseño innovador y funcional",
+        image: vivienda9
+      },
+      {
+        id: 10,
+        title: "Residencia Exclusiva",
+        description: "Arquitectura de alta gama",
+        image: vivienda10
+      },
+      {
+        id: 11,
+        title: "Villa Contemporánea",
+        description: "Espacios amplios y modernos",
+        image: vivienda11
       }
     ],
     interiorismo: [
       {
-        id: 9,
+        id: 12,
         title: "Sala de Estar Elegante",
         description: "Espacios interiores cálidos y sofisticados",
-        image: "/src/assets/Interiorismo/playa1.JPG"
-      },
-      {
-        id: 10,
-        title: "Cocina Minimalista",
-        description: "Diseño funcional y estético",
-        image: "/src/assets/Interiorismo/c2.JPG"
-      },
-      {
-        id: 11,
-        title: "Ambiente Costero",
-        description: "Diseño inspirado en la playa",
-        image: "/src/assets/Interiorismo/playa3.JPG"
-      },
-      {
-        id: 12,
-        title: "Departamento Moderno",
-        description: "Interiorismo contemporáneo",
-        image: "/src/assets/Interiorismo/depin1.JPG"
+        image: interiorismo1
       },
       {
         id: 13,
-        title: "Living Conceptual",
-        description: "Espacios de diseño único",
-        image: "/src/assets/Interiorismo/6.JPG"
+        title: "Cocina Minimalista",
+        description: "Diseño funcional y estético",
+        image: interiorismo2
       },
       {
         id: 14,
-        title: "Sala Contemporánea",
-        description: "Elegancia en cada detalle",
-        image: "/src/assets/Interiorismo/c4.JPG"
+        title: "Ambiente Costero",
+        description: "Diseño inspirado en la playa",
+        image: interiorismo3
       },
       {
         id: 15,
-        title: "Ambiente de Playa",
-        description: "Relajación y estilo",
-        image: "/src/assets/Interiorismo/playa4.JPG"
+        title: "Departamento Moderno",
+        description: "Interiorismo contemporáneo",
+        image: interiorismo4
       },
       {
         id: 16,
+        title: "Living Conceptual",
+        description: "Espacios de diseño único",
+        image: interiorismo5
+      },
+      {
+        id: 17,
+        title: "Sala Contemporánea",
+        description: "Elegancia en cada detalle",
+        image: interiorismo6
+      },
+      {
+        id: 18,
+        title: "Ambiente de Playa",
+        description: "Relajación y estilo",
+        image: interiorismo7
+      },
+      {
+        id: 19,
         title: "Espacio Moderno",
         description: "Diseño y funcionalidad",
-        image: "/src/assets/Interiorismo/depin4.JPG"
+        image: interiorismo8
+      },
+      {
+        id: 20,
+        title: "Departamento Elegante",
+        description: "Interiorismo sofisticado",
+        image: interiorismo9
+      },
+      {
+        id: 21,
+        title: "Sala de Estar Premium",
+        description: "Diseño interior de lujo",
+        image: interiorismo10
+      },
+      {
+        id: 22,
+        title: "Ambiente Acogedor",
+        description: "Calidez y elegancia",
+        image: interiorismo11
+      },
+      {
+        id: 23,
+        title: "Espacio Multifuncional",
+        description: "Versatilidad y diseño",
+        image: interiorismo12
+      },
+      {
+        id: 24,
+        title: "Living Moderno",
+        description: "Espacios contemporáneos",
+        image: interiorismo13
+      },
+      {
+        id: 25,
+        title: "Sala Minimalista",
+        description: "Simplicidad y sofisticación",
+        image: interiorismo14
+      },
+      {
+        id: 26,
+        title: "Ambiente Exclusivo",
+        description: "Diseño único y personal",
+        image: interiorismo15
+      },
+      {
+        id: 27,
+        title: "Espacio Innovador",
+        description: "Creatividad en cada detalle",
+        image: interiorismo16
       }
     ],
     mobiliario: [
       {
-        id: 17,
+        id: 28,
         title: "Mesa de Diseño Industrial",
         description: "Muebles personalizados y funcionales",
-        image: "/src/assets/Mobiliario/10.JPG"
+        image: mobiliario1
       },
       {
-        id: 18,
+        id: 29,
         title: "Cocina Contemporánea",
         description: "Diseño moderno y funcional",
-        image: "/src/assets/Mobiliario/8.JPG"
+        image: mobiliario2
       },
       {
-        id: 19,
+        id: 30,
         title: "Cocina Integral",
         description: "Soluciones completas de cocina",
-        image: "/src/assets/Mobiliario/cocina in.JPG"
+        image: mobiliario3
       },
       {
-        id: 20,
+        id: 31,
         title: "Cocina Premium",
         description: "Diseño de alta gama",
-        image: "/src/assets/Mobiliario/cocina in 2.JPG"
+        image: mobiliario4
       }
     ]
   };
