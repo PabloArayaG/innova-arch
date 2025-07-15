@@ -1,4 +1,5 @@
 import '../css/footer.css';
+import innovalogo from '../assets/innovalogo.png';
 
 const Footer = () => {
   return (
@@ -7,7 +8,7 @@ const Footer = () => {
         <div className="footer-content">
           {/* Logo */}
           <div className="footer-logo">
-            <img src="/src/assets/innovalogo.png" alt="Innova Arquitectura" className="footer-logo-img" />
+            <img src={innovalogo} alt="Innova Arquitectura" className="footer-logo-img" />
           </div>
 
           {/* Instagram */}
