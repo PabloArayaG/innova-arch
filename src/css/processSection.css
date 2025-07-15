@@ -1,0 +1,251 @@
+.process-section {
+  background: #000000;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.process-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.process-content {
+  max-width: 100%;
+  margin: 0;
+  text-align: left;
+}
+
+/* Título principal */
+.process-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 300;
+  color: white;
+  margin-bottom: 80px;
+  letter-spacing: 0.1rem;
+  line-height: 1.4;
+  font-family: 'Inter', sans-serif;
+  text-align: left;
+}
+
+/* Pasos del proceso */
+.process-steps {
+  display: flex;
+  flex-direction: row;
+  gap: 120px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.step-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 20px;
+  transition: all 0.3s ease;
+  flex: 1;
+  max-width: none;
+  text-align: left;
+}
+
+.step-item:hover {
+  transform: translateX(5px);
+}
+
+/* Íconos geométricos */
+.step-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.step-item:hover .step-icon {
+  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* Formas de los íconos */
+.step-icon-brief .icon-shape {
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 2px;
+}
+
+.step-icon-design .icon-shape {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 14px solid white;
+}
+
+.step-icon-delivery .icon-shape {
+  width: 18px;
+  height: 12px;
+  background: white;
+  border-radius: 1px;
+}
+
+/* Contenido del paso */
+.step-content {
+  flex: 1;
+  width: 100%;
+}
+
+.step-title {
+  font-size: 1rem;
+  color: white;
+  font-weight: 400;
+  margin-bottom: 12px;
+  letter-spacing: 0.05rem;
+  text-transform: uppercase;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  text-align: left;
+}
+
+.step-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 300;
+  line-height: 1.5;
+  letter-spacing: 0.02rem;
+  display: block;
+  -webkit-line-clamp: unset;
+  -webkit-box-orient: unset;
+  overflow: visible;
+  height: auto;
+  max-height: none;
+  text-align: left;
+}
+
+/* Animaciones de entrada */
+.process-content {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.step-item {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.step-item:nth-child(1) { animation-delay: 0.2s; }
+.step-item:nth-child(2) { animation-delay: 0.4s; }
+.step-item:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .process-section {
+    padding: 80px 0;
+  }
+  
+  .process-container {
+    padding: 0 20px;
+  }
+  
+  .process-content {
+    max-width: 100%;
+  }
+  
+  .process-title {
+    margin-bottom: 60px;
+  }
+  
+  .process-steps {
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+  }
+  
+  .step-item {
+    flex-direction: row;
+    gap: 20px;
+    max-width: 100%;
+    text-align: left;
+    align-items: flex-start;
+  }
+  
+  .step-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .step-icon-brief .icon-shape {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .step-icon-design .icon-shape {
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 12px solid white;
+  }
+  
+  .step-icon-delivery .icon-shape {
+    width: 16px;
+    height: 10px;
+  }
+  
+  .step-title {
+    font-size: 1rem;
+  }
+  
+  .step-description {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-section {
+    padding: 60px 0;
+  }
+  
+  .process-title {
+    margin-bottom: 40px;
+  }
+  
+  .process-steps {
+    gap: 30px;
+  }
+  
+  .step-item {
+    gap: 15px;
+  }
+  
+  .step-icon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .step-title {
+    font-size: 1rem;
+  }
+  
+  .step-description {
+    font-size: 0.85rem;
+  }
+} 

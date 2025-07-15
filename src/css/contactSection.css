@@ -1,0 +1,240 @@
+.contact-section {
+  background: #000000;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.contact-content {
+  max-width: 800px;
+  margin: 0;
+  text-align: left;
+}
+
+/* Título principal */
+.contact-title {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 300;
+  color: white;
+  margin-bottom: 60px;
+  letter-spacing: 0.1rem;
+  line-height: 1.4;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Wrapper del contenido */
+.contact-wrapper {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.contact-form-container {
+  flex: 1;
+  max-width: 500px;
+}
+
+/* Formulario */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 16px 20px;
+  font-size: 0.9rem;
+  font-weight: 300;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02rem;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-submit {
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 16px 32px;
+  font-size: 0.9rem;
+  font-weight: 300;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-family: 'Inter', sans-serif;
+  align-self: flex-start;
+}
+
+.form-submit:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+/* Divisor visual */
+.form-divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.form-divider span {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.05rem;
+}
+
+/* WhatsApp integrado */
+.whatsapp-button {
+  background: #25D366;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.05rem;
+  font-family: 'Inter', sans-serif;
+  text-decoration: none;
+  align-self: flex-start;
+  justify-content: center;
+}
+
+.whatsapp-button:hover {
+  background: #20b954;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Animaciones de entrada */
+.contact-content {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 0;
+  }
+  
+  .contact-container {
+    padding: 0 20px;
+  }
+  
+  .contact-content {
+    max-width: 100%;
+  }
+  
+  .contact-title {
+    margin-bottom: 40px;
+  }
+  
+  .contact-wrapper {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .contact-form-container {
+    max-width: 100%;
+  }
+  
+  .whatsapp-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 60px 0;
+  }
+  
+  .contact-title {
+    margin-bottom: 30px;
+  }
+  
+  .contact-wrapper {
+    gap: 30px;
+  }
+  
+  .form-input,
+  .form-textarea {
+    padding: 14px 16px;
+  }
+  
+  .form-submit {
+    padding: 14px 28px;
+  }
+  
+  .whatsapp-button {
+    padding: 14px 28px;
+  }
+} 
