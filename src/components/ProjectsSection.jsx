@@ -248,16 +248,33 @@ const ProjectsSection = () => {
 
   const getCurrentProjects = () => {
     if (activeCategory === 'all') {
-      // Combinar todos los proyectos para la vista "Todos"
-      const allProjectsArray = [
-        ...allProjects.vivienda,
-        ...allProjects.interiorismo,
-        ...allProjects.mobiliario
-      ];
+      // Combinar todos los proyectos mezclados para la vista "Todos"
+      const allProjectsArray = [];
+      const maxLength = Math.max(
+        allProjects.vivienda.length,
+        allProjects.interiorismo.length,
+        allProjects.mobiliario.length
+      );
+      
+      // Mezclar proyectos intercalando categorías
+      for (let i = 0; i < maxLength; i++) {
+        if (i < allProjects.vivienda.length) allProjectsArray.push(allProjects.vivienda[i]);
+        if (i < allProjects.interiorismo.length) allProjectsArray.push(allProjects.interiorismo[i]);
+        if (i < allProjects.mobiliario.length) allProjectsArray.push(allProjects.mobiliario[i]);
+      }
+      
       const startIndex = currentPage * itemsPerPage;
       return allProjectsArray.slice(startIndex, startIndex + itemsPerPage);
     } else {
       const categoryProjects = allProjects[activeCategory] || [];
+      
+      // Para vivienda, mostrar en orden diferente (empezar desde el proyecto más reciente)
+      if (activeCategory === 'vivienda') {
+        const reorderedProjects = [...categoryProjects].reverse();
+        const startIndex = currentPage * itemsPerPage;
+        return reorderedProjects.slice(startIndex, startIndex + itemsPerPage);
+      }
+      
       const startIndex = currentPage * itemsPerPage;
       return categoryProjects.slice(startIndex, startIndex + itemsPerPage);
     }
@@ -265,12 +282,10 @@ const ProjectsSection = () => {
 
   const getTotalPages = () => {
     if (activeCategory === 'all') {
-      const allProjectsArray = [
-        ...allProjects.vivienda,
-        ...allProjects.interiorismo,
-        ...allProjects.mobiliario
-      ];
-      return Math.ceil(allProjectsArray.length / itemsPerPage);
+      const totalProjects = allProjects.vivienda.length + 
+                           allProjects.interiorismo.length + 
+                           allProjects.mobiliario.length;
+      return Math.ceil(totalProjects / itemsPerPage);
     }
     const categoryProjects = allProjects[activeCategory] || [];
     return Math.ceil(categoryProjects.length / itemsPerPage);
