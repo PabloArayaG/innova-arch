@@ -1,14 +1,28 @@
 import '../css/footer.css';
-import innovalogo from '../assets/innovalogo.png';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-container">
         <div className="footer-content">
-          {/* Logo */}
+          {/* Video en lugar del logo */}
           <div className="footer-logo">
-            <img src={innovalogo} alt="Innova Arquitectura" className="footer-logo-img" />
+            <video 
+              className="footer-logo-video"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls={false}
+              disablePictureInPicture
+              onEnded={(e) => {
+                e.target.currentTime = 0;
+                e.target.play();
+              }}
+            >
+              <source src="/sgt-innova.mp4" type="video/mp4" />
+              Tu navegador no soporta el elemento video.
+            </video>
           </div>
 
           {/* Instagram */}

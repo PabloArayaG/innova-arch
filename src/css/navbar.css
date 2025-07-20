@@ -39,7 +39,8 @@
   list-style: none;
 }
 
-.navbar-nav a {
+.navbar-nav a,
+.navbar-nav .navbar-link {
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
   font-size: 13px;
@@ -50,11 +51,13 @@
   position: relative;
 }
 
-.navbar-nav a:hover {
+.navbar-nav a:hover,
+.navbar-nav .navbar-link:hover {
   color: white;
 }
 
-.navbar-nav a::after {
+.navbar-nav a::after,
+.navbar-nav .navbar-link::after {
   content: '';
   position: absolute;
   bottom: -5px;
@@ -65,7 +68,24 @@
   transition: width 0.3s ease;
 }
 
-.navbar-nav a:hover::after {
+.navbar-nav a:hover::after,
+.navbar-nav .navbar-link:hover::after {
+  width: 100%;
+}
+
+/* Estilos específicos para React Router Links */
+.navbar-nav .navbar-link {
+  display: inline-block;
+}
+
+/* Estado activo para el enlace de Servicios */
+.navbar-nav a[href="/servicios"].active,
+.navbar-nav .navbar-link.active {
+  color: white;
+}
+
+.navbar-nav a[href="/servicios"].active::after,
+.navbar-nav .navbar-link.active::after {
   width: 100%;
 }
 
@@ -82,7 +102,8 @@
     gap: 25px;
   }
   
-  .navbar-nav a {
+  .navbar-nav a,
+  .navbar-nav .navbar-link {
     font-size: 11px;
     letter-spacing: 0.3px;
   }
@@ -105,7 +126,8 @@
     gap: 15px;
   }
   
-  .navbar-nav a {
+  .navbar-nav a,
+  .navbar-nav .navbar-link {
     font-size: 10px;
     letter-spacing: 0.2px;
   }

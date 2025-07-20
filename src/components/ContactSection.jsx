@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import '../css/contactSection.css';
+// Importar una imagen para usar como fondo
+import backgroundImage from '../assets/Viviendas/Enscape_2025-04-27-22-55-27.JPG';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -38,7 +40,15 @@ const ContactSection = () => {
           </h2>
 
           <div className="contact-wrapper">
-            {/* Formulario */}
+            {/* Imagen de fondo a la izquierda */}
+            <div className="contact-image-container">
+              <div className="contact-background-image">
+                <img src={backgroundImage} alt="Innova Architecture" className="contact-bg-img" />
+                <div className="contact-image-overlay"></div>
+              </div>
+            </div>
+
+            {/* Formulario a la derecha */}
             <div className="contact-form-container">
               <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-group">

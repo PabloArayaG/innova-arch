@@ -1,7 +1,15 @@
 
 
 const HeroSection = () => {
-return (
+  // Handler para smooth scroll a la sección de proyectos
+  const handleVerProyectos = () => {
+    const proyectosElement = document.querySelector('#projects');
+    if (proyectosElement) {
+      proyectosElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
 <div id="home" style={{ 
     position: 'relative',
     width: '100%', 
@@ -87,14 +95,16 @@ return (
     </div>
     
     {/* Botón minimalista */}
-    <button style={{
+    <button 
+    onClick={handleVerProyectos}
+    style={{
         backgroundColor: 'transparent',
         color: 'white',
         border: '1px solid rgba(255, 255, 255, 0.3)',
         padding: '1rem 3rem',
         fontSize: '1rem',
         fontWeight: '300',
-        borderRadius: '2px',
+        borderRadius: '8px',
         cursor: 'pointer',
         transition: 'all 0.3s ease',
         letterSpacing: '0.2rem',
