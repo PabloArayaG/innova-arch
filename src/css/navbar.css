@@ -44,6 +44,9 @@
   width: 30px;
   height: 24px;
   z-index: 1001;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
 }
 
 .mobile-menu-toggle span {
@@ -193,6 +196,7 @@
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1002;
   }
   
   /* Menú móvil abierto */
@@ -228,6 +232,12 @@
     align-items: center;
     text-align: center;
     min-height: 50px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   
   .navbar-nav a:hover,
@@ -251,7 +261,7 @@
     width: 100%;
     height: calc(100vh - 70px);
     background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    z-index: 1001;
   }
 }
 
@@ -274,6 +284,7 @@
     height: calc(100vh - 65px);
     padding: 30px 15px;
     gap: 6px;
+    z-index: 1002;
   }
   
   .navbar-nav a,
@@ -283,11 +294,15 @@
     max-width: 280px;
     margin: 2px 0;
     min-height: 48px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
   }
   
   .mobile-menu-overlay {
     top: 65px;
     height: calc(100vh - 65px);
+    z-index: 1001;
   }
 }
 
@@ -313,6 +328,7 @@
   .navbar-nav {
     padding: 25px 12px;
     gap: 4px;
+    z-index: 1002;
   }
   
   .navbar-nav a,
@@ -322,5 +338,8 @@
     max-width: 260px;
     margin: 2px 0;
     min-height: 46px;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
   }
 } 
