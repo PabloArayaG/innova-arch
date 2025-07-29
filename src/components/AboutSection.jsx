@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/aboutSection.css';
+import backgroundImage from '../assets/Interiorismo/IMG_2797.JPG';
 
 // Registrar el plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
@@ -11,6 +12,7 @@ const AboutSection = () => {
   const titleRef = useRef(null);
   const valuesRef = useRef(null);
   const descriptionRef = useRef(null);
+  const imageRef = useRef(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -19,6 +21,13 @@ const AboutSection = () => {
         opacity: 0,
         y: 40,
         filter: "blur(8px)"
+      });
+
+      // Configuración inicial de la imagen
+      gsap.set(imageRef.current, {
+        opacity: 0,
+        scale: 1.1,
+        filter: "blur(10px)"
       });
 
       // Timeline principal con ScrollTrigger
@@ -54,7 +63,15 @@ const AboutSection = () => {
         filter: "blur(0px)",
         duration: 1.8,
         ease: "power2.out"
-      }, "-=1");
+      }, "-=1")
+      // Animación elegante de la imagen
+      .to(imageRef.current, {
+        opacity: 0.15,
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 3,
+        ease: "power2.out"
+      }, "-=2.5");
 
     }, sectionRef);
 
@@ -62,6 +79,15 @@ const AboutSection = () => {
   }, []);
   return (
     <section ref={sectionRef} className="about-section" id="about">
+      {/* Imagen de fondo animada */}
+      <div 
+        ref={imageRef} 
+        className="about-background-image"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+        }}
+      ></div>
+      
       <div className="about-container">
         <div className="about-content">
           {/* Título principal */}

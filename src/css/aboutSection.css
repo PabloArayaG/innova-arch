@@ -5,14 +5,12 @@
   overflow: hidden;
 }
 
-.about-section::before {
-  content: '';
+.about-background-image {
   position: absolute;
   top: 0;
   right: 0;
   width: 50%;
   height: 100%;
-  background-image: url('/src/assets/Interiorismo/IMG_2797.JPG');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -108,7 +106,7 @@
     padding: 80px 0;
   }
   
-  .about-section::before {
+  .about-background-image {
     width: 60%;
     opacity: 0.1;
   }
@@ -153,7 +151,7 @@
     padding: 60px 0;
   }
   
-  .about-section::before {
+  .about-background-image {
     width: 70%;
     opacity: 0.08;
   }
