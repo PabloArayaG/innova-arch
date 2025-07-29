@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import '../css/contactSection.css';
 // Importar una imagen para usar como fondo
 import backgroundImage from '../assets/Viviendas/Enscape_2025-04-27-22-55-27.JPG';
+
+// Registrar el plugin ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +14,12 @@ const ContactSection = () => {
     email: '',
     message: ''
   });
+
+  // Referencias para animaciones GSAP
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const imageContainerRef = useRef(null);
+  const formContainerRef = useRef(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -30,18 +41,93 @@ const ContactSection = () => {
     window.open(whatsappUrl, '_blank');
   };
 
+  // Animaciones GSAP elegantes
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Configuración inicial - efectos sutiles
+      gsap.set(titleRef.current, {
+        opacity: 0
+      });
+
+      gsap.set(imageContainerRef.current, {
+        opacity: 0,
+        scale: 1.05,
+        filter: "blur(20px)"
+      });
+
+      gsap.set(formContainerRef.current, {
+        opacity: 0
+      });
+
+      // Elementos del formulario para animación individual
+      const formElements = formContainerRef.current?.querySelectorAll('.form-group, .form-submit, .form-divider, .whatsapp-button');
+
+      if (formElements) {
+        gsap.set(formElements, {
+          opacity: 0,
+          y: 20,
+          filter: "blur(5px)"
+        });
+      }
+
+      // Timeline principal con ScrollTrigger
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      // Animación mínima y directa
+      tl
+      // Título aparece rápido
+      .to(titleRef.current, {
+        opacity: 1,
+        duration: 0.4,
+        ease: "power2.out"
+      })
+      // Todo aparece casi instantáneamente
+      .to([imageContainerRef.current, formContainerRef.current], {
+        opacity: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      }, "-=0.2")
+      // Imagen se ajusta rápidamente
+      .to(imageContainerRef.current, {
+        scale: 1,
+        filter: "blur(0px)",
+        duration: 0.5,
+        ease: "power2.out"
+      }, "<")
+      // Formulario aparece casi al instante
+      .to(formElements, {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        duration: 0.2,
+        stagger: 0.03,
+        ease: "power2.out"
+      }, "-=0.3");
+
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="contact-section" id="contact">
+    <section ref={sectionRef} className="contact-section" id="contact">
       <div className="contact-container">
         <div className="contact-content">
           {/* Título principal */}
-          <h2 className="contact-title">
+          <h2 ref={titleRef} className="contact-title">
             Contacto
           </h2>
 
           <div className="contact-wrapper">
             {/* Imagen de fondo a la izquierda */}
-            <div className="contact-image-container">
+            <div ref={imageContainerRef} className="contact-image-container">
               <div className="contact-background-image">
                 <img src={backgroundImage} alt="Innova Architecture" className="contact-bg-img" />
                 <div className="contact-image-overlay"></div>
@@ -49,7 +135,7 @@ const ContactSection = () => {
             </div>
 
             {/* Formulario a la derecha */}
-            <div className="contact-form-container">
+            <div ref={formContainerRef} className="contact-form-container">
               <form className="contact-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <input

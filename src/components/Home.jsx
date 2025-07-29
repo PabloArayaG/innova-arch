@@ -1,4 +1,5 @@
 import HeroSection from './HeroSection';
+import TeaserSection from './TeaserSection';
 import AboutSection from './AboutSection';
 import ProcessSection from './ProcessSection';
 import ProjectsSection from './ProjectsSection';
@@ -8,6 +9,7 @@ const Home = () => {
   return (
     <>
       <HeroSection />
+      <TeaserSection />
       <AboutSection />
       <ProcessSection />
       <ProjectsSection />

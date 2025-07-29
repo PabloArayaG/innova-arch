@@ -317,6 +317,8 @@ const ProjectsSection = () => {
     setSelectedImage(null);
   };
 
+  // Sin animaciones - sección completamente estática
+
   // Cerrar modal con tecla ESC
   useEffect(() => {
     const handleKeyDown = (event) => {

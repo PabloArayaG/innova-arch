@@ -1,4 +1,4 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
@@ -22,16 +22,12 @@ const ScrollToTop = () => {
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000); // 3 segundos de loader
-
-    return () => clearTimeout(timer);
-  }, []);
+  const handleLoaderComplete = () => {
+    setIsLoading(false);
+  };
 
   if (isLoading) {
-    return <Loader />;
+    return <Loader onComplete={handleLoaderComplete} />;
   }
 
   return (
