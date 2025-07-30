@@ -31,7 +31,7 @@ export default async function handler(req, res) {
 
     // Configuración del transportador de correo
     // IMPORTANTE: Estas variables deben estar configuradas en Vercel
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST, // ej: smtp.gmail.com
       port: process.env.SMTP_PORT || 587,
       secure: false, // true para 465, false para otros puertos
