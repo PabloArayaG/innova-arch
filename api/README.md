@@ -15,6 +15,9 @@ SMTP_PASS=tu-contraseña-de-aplicacion
 
 # Email destino (donde llegarán los mensajes)
 RECEIVER_EMAIL=innova.arch.av@gmail.com
+
+# reCAPTCHA v2 (checkbox clásico)
+RECAPTCHA_SECRET_KEY=tu-secret-key-de-recaptcha
 ```
 
 ### 🔐 Configuración con Gmail
@@ -34,7 +37,8 @@ RECEIVER_EMAIL=innova.arch.av@gmail.com
 {
   "name": "Juan Pérez",
   "email": "juan@ejemplo.com", 
-  "message": "Hola, me interesa un proyecto..."
+  "message": "Hola, me interesa un proyecto...",
+  "recaptchaToken": "03AGdBq25..."
 }
 ```
 

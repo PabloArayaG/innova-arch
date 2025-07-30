@@ -13,17 +13,26 @@
    - Selecciona "Mail" como aplicación
    - Copia la contraseña generada (16 caracteres)
 
+### 1.5. 🔒 Obtener reCAPTCHA Secret Key
+
+1. **Ve a Google reCAPTCHA Admin Console**: [https://www.google.com/recaptcha/admin](https://www.google.com/recaptcha/admin)
+2. **Busca tu sitio** (o crea uno nuevo si es necesario)
+3. **Site Key actual**: `6Lfz9pMrAAAAAFnMtU3lpuOZBMmcTojmqi0yIyf3`
+4. **Copia la Secret Key** (la que NO es pública)
+5. **Úsala como** `RECAPTCHA_SECRET_KEY`
+
 ### 2. 🚀 Configurar en Vercel Dashboard
 
 Ve a tu proyecto en Vercel → **Settings** → **Environment Variables**
 
-Agrega estas **3 variables** (Gmail configurado automáticamente):
+Agrega estas **4 variables** (Gmail configurado automáticamente):
 
 | Variable | Valor | Ejemplo |
 |----------|-------|---------|
 | `SMTP_USER` | `innova.arch.av@gmail.com` | innova.arch.av@gmail.com |
 | `SMTP_PASS` | `[contraseña de aplicación]` | abcd efgh ijkl mnop |
 | `RECEIVER_EMAIL` | `innova.arch.av@gmail.com` | innova.arch.av@gmail.com |
+| `RECAPTCHA_SECRET_KEY` | `[secret key de reCAPTCHA]` | 6Lfz9pMrAAAAAA... |
 
 ### 3. ✅ Verificar configuración
 

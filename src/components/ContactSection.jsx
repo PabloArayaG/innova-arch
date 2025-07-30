@@ -17,6 +17,7 @@ const ContactSection = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
 
   // Referencias para animaciones GSAP
   const sectionRef = useRef(null);
@@ -33,6 +34,15 @@ const ContactSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    // Validar reCAPTCHA
+    if (!recaptchaToken) {
+      setSubmitStatus('error');
+      console.error('Por favor completa el reCAPTCHA');
+      setTimeout(() => setSubmitStatus(null), 5000);
+      return;
+    }
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
@@ -42,7 +52,10 @@ const ContactSection = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          recaptchaToken
+        }),
       });
 
       const result = await response.json();
@@ -55,6 +68,11 @@ const ContactSection = () => {
           email: '',
           message: ''
         });
+        // Resetear reCAPTCHA
+        setRecaptchaToken(null);
+        if (window.grecaptcha) {
+          window.grecaptcha.reset();
+        }
       } else {
         setSubmitStatus('error');
         console.error('Error al enviar:', result.message);
@@ -75,6 +93,36 @@ const ContactSection = () => {
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
+
+  // Cargar script de reCAPTCHA y configurar callbacks globales
+  useEffect(() => {
+    // Exponer callbacks globalmente para reCAPTCHA
+    window.onRecaptchaChange = (token) => {
+      setRecaptchaToken(token);
+    };
+    
+    window.onRecaptchaExpired = () => {
+      setRecaptchaToken(null);
+    };
+
+    const loadRecaptcha = () => {
+      if (window.grecaptcha) return; // Ya está cargado
+      
+      const script = document.createElement('script');
+      script.src = 'https://www.google.com/recaptcha/api.js';
+      script.async = true;
+      script.defer = true;
+      document.head.appendChild(script);
+    };
+    
+    loadRecaptcha();
+
+    // Cleanup
+    return () => {
+      delete window.onRecaptchaChange;
+      delete window.onRecaptchaExpired;
+    };
+  }, []);
 
   // Animaciones GSAP elegantes
   useEffect(() => {
@@ -208,7 +256,17 @@ const ContactSection = () => {
                   ></textarea>
                 </div>
                 
-                <button type="submit" className="form-submit" disabled={isSubmitting}>
+                {/* reCAPTCHA */}
+                <div className="recaptcha-container">
+                  <div 
+                    className="g-recaptcha" 
+                    data-sitekey="6Lfz9pMrAAAAAFnMtU3lpuOZBMmcTojmqi0yIyf3"
+                    data-callback="onRecaptchaChange"
+                    data-expired-callback="onRecaptchaExpired"
+                  ></div>
+                </div>
+                
+                <button type="submit" className="form-submit" disabled={isSubmitting || !recaptchaToken}>
                   {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
                 </button>
 
@@ -220,7 +278,7 @@ const ContactSection = () => {
                 )}
                 {submitStatus === 'error' && (
                   <div className="form-message form-message-error">
-                    ❌ Error al enviar el mensaje. Intenta nuevamente o contáctanos por WhatsApp.
+                    ❌ Error al enviar el mensaje. Verifica el reCAPTCHA y todos los campos, luego intenta nuevamente.
                   </div>
                 )}
 

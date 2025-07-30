@@ -10,13 +10,47 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, message } = req.body;
+    const { name, email, message, recaptchaToken } = req.body;
 
     // Validación básica de campos requeridos
     if (!name || !email || !message) {
       return res.status(400).json({
         success: false,
         message: 'Todos los campos son requeridos'
+      });
+    }
+
+    // Validación de reCAPTCHA
+    if (!recaptchaToken) {
+      return res.status(400).json({
+        success: false,
+        message: 'reCAPTCHA es requerido'
+      });
+    }
+
+    // Verificar reCAPTCHA con Google
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    if (!recaptchaSecret) {
+      return res.status(500).json({
+        success: false,
+        message: 'Configuración de reCAPTCHA incompleta'
+      });
+    }
+
+    const recaptchaResponse = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${recaptchaSecret}&response=${recaptchaToken}`
+    });
+
+    const recaptchaResult = await recaptchaResponse.json();
+
+    if (!recaptchaResult.success) {
+      return res.status(400).json({
+        success: false,
+        message: 'Verificación de reCAPTCHA fallida'
       });
     }
 

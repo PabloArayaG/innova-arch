@@ -197,6 +197,18 @@
   }
 }
 
+/* reCAPTCHA */
+.recaptcha-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.g-recaptcha {
+  transform-origin: 0 0;
+}
+
 /* Divisor visual */
 .form-divider {
   display: flex;
@@ -350,5 +362,16 @@
   
   .whatsapp-button {
     padding: 14px 28px;
+  }
+
+  /* reCAPTCHA responsive */
+  .recaptcha-container {
+    margin: 15px 0;
+    justify-content: center;
+  }
+
+  .g-recaptcha {
+    transform: scale(0.85);
+    transform-origin: 0 0;
   }
 } 
