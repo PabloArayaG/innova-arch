@@ -15,6 +15,9 @@ const ContactSection = () => {
     message: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', null
+
   // Referencias para animaciones GSAP
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
@@ -28,10 +31,42 @@ const ContactSection = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Aquí se puede agregar la lógica de envío del formulario
-    console.log('Formulario enviado:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setSubmitStatus('success');
+        // Limpiar formulario después del éxito
+        setFormData({
+          name: '',
+          email: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+        console.error('Error al enviar:', result.message);
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('Error de conexión:', error);
+    } finally {
+      setIsSubmitting(false);
+      // Limpiar mensaje después de 5 segundos
+      setTimeout(() => setSubmitStatus(null), 5000);
+    }
   };
 
   const handleWhatsApp = () => {
@@ -173,9 +208,21 @@ const ContactSection = () => {
                   ></textarea>
                 </div>
                 
-                <button type="submit" className="form-submit">
-                  Enviar mensaje
+                <button type="submit" className="form-submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
                 </button>
+
+                {/* Mensajes de estado */}
+                {submitStatus === 'success' && (
+                  <div className="form-message form-message-success">
+                    ✅ Mensaje enviado correctamente. Te contactaremos pronto.
+                  </div>
+                )}
+                {submitStatus === 'error' && (
+                  <div className="form-message form-message-error">
+                    ❌ Error al enviar el mensaje. Intenta nuevamente o contáctanos por WhatsApp.
+                  </div>
+                )}
 
                 {/* Divisor visual */}
                 <div className="form-divider">

@@ -150,6 +150,53 @@
   transform: translateY(-2px);
 }
 
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form-submit:disabled:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: transparent;
+  transform: none;
+}
+
+/* Mensajes de estado del formulario */
+.form-message {
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin: 16px 0;
+  animation: slideIn 0.3s ease-out;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.4;
+}
+
+.form-message-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+}
+
+.form-message-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Divisor visual */
 .form-divider {
   display: flex;
