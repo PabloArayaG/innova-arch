@@ -9,14 +9,12 @@ Esta API utiliza **Vercel Serverless Functions** para manejar el envío de corre
 Configura estas variables en **Vercel Dashboard** → **Settings** → **Environment Variables**:
 
 ```bash
-# Configuración SMTP (ejemplo con Gmail)
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=587
+# Configuración SMTP simplificada (Gmail hardcodeado)
 SMTP_USER=innova.arch.av@gmail.com
 SMTP_PASS=tu-contraseña-de-aplicacion
 
 # Email destino (donde llegarán los mensajes)
-CONTACT_EMAIL=innova.arch.av@gmail.com
+RECEIVER_EMAIL=innova.arch.av@gmail.com
 ```
 
 ### 🔐 Configuración con Gmail

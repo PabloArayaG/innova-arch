@@ -32,8 +32,8 @@ export default async function handler(req, res) {
     // Configuración del transportador de correo
     // IMPORTANTE: Estas variables deben estar configuradas en Vercel
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST, // ej: smtp.gmail.com
-      port: process.env.SMTP_PORT || 587,
+      host: 'smtp.gmail.com',
+      port: 587,
       secure: false, // true para 465, false para otros puertos
       auth: {
         user: process.env.SMTP_USER, // tu email
@@ -44,7 +44,7 @@ export default async function handler(req, res) {
     // Configuración del correo a enviar
     const mailOptions = {
       from: `"${name}" <${process.env.SMTP_USER}>`, // sender address
-      to: process.env.CONTACT_EMAIL || process.env.SMTP_USER, // recipient
+      to: process.env.RECEIVER_EMAIL || process.env.SMTP_USER, // recipient
       subject: `Nuevo mensaje de contacto - Innova Arquitectura`, // Subject line
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">

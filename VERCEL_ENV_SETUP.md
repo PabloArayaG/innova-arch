@@ -17,15 +17,13 @@
 
 Ve a tu proyecto en Vercel → **Settings** → **Environment Variables**
 
-Agrega estas **5 variables**:
+Agrega estas **3 variables** (Gmail configurado automáticamente):
 
 | Variable | Valor | Ejemplo |
 |----------|-------|---------|
-| `SMTP_HOST` | `smtp.gmail.com` | smtp.gmail.com |
-| `SMTP_PORT` | `587` | 587 |
 | `SMTP_USER` | `innova.arch.av@gmail.com` | innova.arch.av@gmail.com |
 | `SMTP_PASS` | `[contraseña de aplicación]` | abcd efgh ijkl mnop |
-| `CONTACT_EMAIL` | `innova.arch.av@gmail.com` | innova.arch.av@gmail.com |
+| `RECEIVER_EMAIL` | `innova.arch.av@gmail.com` | innova.arch.av@gmail.com |
 
 ### 3. ✅ Verificar configuración
 
