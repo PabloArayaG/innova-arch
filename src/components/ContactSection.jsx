@@ -73,17 +73,24 @@ const ContactSection = () => {
         if (window.grecaptcha) {
           window.grecaptcha.reset();
         }
+        
+        // Ocultar overlay de agradecimiento después de 4 segundos
+        setTimeout(() => {
+          setSubmitStatus(null);
+        }, 4000);
       } else {
         setSubmitStatus('error');
         console.error('Error al enviar:', result.message);
+        // Limpiar mensaje de error después de 5 segundos
+        setTimeout(() => setSubmitStatus(null), 5000);
       }
     } catch (error) {
       setSubmitStatus('error');
       console.error('Error de conexión:', error);
+      // Limpiar mensaje de error después de 5 segundos
+      setTimeout(() => setSubmitStatus(null), 5000);
     } finally {
       setIsSubmitting(false);
-      // Limpiar mensaje después de 5 segundos
-      setTimeout(() => setSubmitStatus(null), 5000);
     }
   };
 
@@ -270,12 +277,7 @@ const ContactSection = () => {
                   {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
                 </button>
 
-                {/* Mensajes de estado */}
-                {submitStatus === 'success' && (
-                  <div className="form-message form-message-success">
-                    ✅ Mensaje enviado correctamente. Te contactaremos pronto.
-                  </div>
-                )}
+                {/* Mensaje de error */}
                 {submitStatus === 'error' && (
                   <div className="form-message form-message-error">
                     ❌ Error al enviar el mensaje. Verifica el reCAPTCHA y todos los campos, luego intenta nuevamente.
@@ -298,6 +300,19 @@ const ContactSection = () => {
                 </button>
               </form>
             </div>
+
+            {/* Overlay de agradecimiento */}
+            {submitStatus === 'success' && (
+              <div className="thank-you-overlay">
+                <div className="thank-you-content">
+                  <div className="thank-you-icon">✓</div>
+                  <h3 className="thank-you-title">¡Mensaje enviado!</h3>
+                  <p className="thank-you-message">
+                    Gracias por tu mensaje. Te responderemos pronto.
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
