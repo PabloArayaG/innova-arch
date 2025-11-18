@@ -92,7 +92,7 @@ const AboutSection = () => {
         <div className="about-content">
           {/* Título principal */}
           <h2 ref={titleRef} className="about-title">
-            Diseñamos renders que transforman ideas en realidades visuales impactantes
+          Desarrollamos soluciones arquitectónicas que combinan diseño interior, modelado 3D, renders fotorealistas y planimetría técnica.
           </h2>
 
           {/* Valores principales */}

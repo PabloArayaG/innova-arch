@@ -345,7 +345,7 @@ const ProjectsSection = () => {
       <div className="projects-container">
         <div className="projects-header">
           <p className="projects-subtitle">
-            Renders fotorrealistas que materializan ideas arquitectónicas con precisión técnica y calidad visual
+          Define lo que necesitas: diseño, modelado 3D, renders o planimetría. Nos adaptamos a tu proyecto.
           </p>
         </div>
 
