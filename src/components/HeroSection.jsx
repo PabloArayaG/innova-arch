@@ -83,7 +83,7 @@ const HeroSection = () => {
         objectFit: 'cover',
         zIndex: 1
     }}
-    src="/innova.mp4"
+    src="/hero-video.webm"
     autoPlay
     loop
     muted
