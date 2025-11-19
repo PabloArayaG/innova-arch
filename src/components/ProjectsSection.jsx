@@ -283,8 +283,8 @@ const ProjectsSection = () => {
   const getTotalPages = () => {
     if (activeCategory === 'all') {
       const totalProjects = allProjects.vivienda.length + 
-                           allProjects.interiorismo.length + 
-                           allProjects.mobiliario.length;
+                          allProjects.interiorismo.length + 
+                          allProjects.mobiliario.length;
       return Math.ceil(totalProjects / itemsPerPage);
     }
     const categoryProjects = allProjects[activeCategory] || [];

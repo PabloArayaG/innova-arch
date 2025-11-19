@@ -22,6 +22,16 @@ const Navbar = () => {
     setIsMenuOpen(false);
   };
 
+  // Handler para el click del logo
+  const handleLogoClick = (e) => {
+    if (isHomePage) {
+      e.preventDefault();
+      // Scroll al hero-section (top de la página)
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    setIsMenuOpen(false);
+  };
+
   // Toggle menu móvil
   const toggleMobileMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -49,7 +59,7 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo-container">
-          <Link to="/">
+          <Link to="/" onClick={handleLogoClick}>
             <img 
               src={innovalogo} 
               alt="Innova Logo" 

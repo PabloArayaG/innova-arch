@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import '../css/services.css';
 
@@ -43,12 +43,20 @@ const useScrollAnimation = () => {
 };
 
 const Services = () => {
+  const navigate = useNavigate();
   const [headerRef, headerVisible] = useScrollAnimation();
   const [service1Ref, service1Visible] = useScrollAnimation();
   const [service2Ref, service2Visible] = useScrollAnimation();
   const [service3Ref, service3Visible] = useScrollAnimation();
   const [service4Ref, service4Visible] = useScrollAnimation();
   const [ctaRef, ctaVisible] = useScrollAnimation();
+
+  // Handler para navegar a contacto
+  const handleContactClick = (e) => {
+    e.preventDefault();
+    // Navegar con state para indicar que queremos ir a contacto
+    navigate('/', { state: { scrollTo: 'contact' } });
+  };
 
   return (
     <div className="services-page">
@@ -136,9 +144,13 @@ const Services = () => {
           ref={ctaRef}
           className={`services-cta ${ctaVisible ? 'animate-in' : ''}`}
         >
-          <Link to="/#contact" className="services-contact-btn">
+          <a 
+            href="/#contact" 
+            className="services-contact-btn"
+            onClick={handleContactClick}
+          >
             Solicitar Cotización
-          </Link>
+          </a>
         </div>
       </div>
     </div>
